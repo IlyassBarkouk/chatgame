@@ -15,7 +15,7 @@ interface UserInfo {
   userName: string;
 }
 
-const SOCKET_SERVER_URL = "http://192.168.2.196:3001";
+const SOCKET_SERVER_URL = "http://192.168.11.113:3001";
 
 const characterSprites: Record<string, string> = {
   char1: char1,
@@ -44,12 +44,12 @@ export default function Character() {
     console.log("Connexion au serveur Socket.io...");
     const socketIo = io(SOCKET_SERVER_URL, { transports: ["websocket"] });
     setSocket(socketIo);
-
+  
     socketIo.on("connect", () => {
       setConnected(true);
       console.log("Connecté avec ID:", socketIo.id);
     });
-
+  
     socketIo.on("disconnect", () => {
       setConnected(false);
       setChosenCharacterId("");
@@ -59,19 +59,19 @@ export default function Character() {
       setNearbyUser(null);
       setInCall(false);
     });
-
+  
     socketIo.on("all-users", (usersList: UserInfo[]) => {
       setAllUsers(usersList);
     });
-
+  
     socketIo.on("character-taken", (data: { characterId: string }) => {
       setRegistrationError(`Avatar "${data.characterId}" déjà pris.`);
       setChosenCharacterId("");
     });
-
+  
     socketIo.on("signal", async ({ from, signal }) => {
       if (!pc.current) return;
-
+  
       if (signal.type === "offer") {
         await pc.current.setRemoteDescription(new RTCSessionDescription(signal));
         const answer = await pc.current.createAnswer();
@@ -87,12 +87,12 @@ export default function Character() {
         }
       }
     });
-
+  
     return () => {
       socketIo.disconnect();
     };
   }, []);
-
+  
 
   // Enregistrement du personnage choisi avec le nom
   useEffect(() => {
