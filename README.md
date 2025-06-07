@@ -1,6 +1,6 @@
 # 🎮 Chat Game: Proximity Video Call
 
-This project is a real-time chat game built with **React** for the client-side and **Node.js** for the server-side. It features a unique ability to initiate a video call between two characters when they are in close proximity within the game environment.
+Ce projet est un jeu de chat en temps réel construit avec **React** pour le côté client et **Node.js** pour le côté serveur. Il offre la possibilité d'initier un appel vidéo entre deux personnages lorsqu'ils se trouvent à proximité dans l'environnement du jeu.
 
 ---
 
@@ -18,17 +18,17 @@ This project is a real-time chat game built with **React** for the client-side a
 ### 1. Cloner le projet
 
 ```bash
-git clone <repository_url>
-cd <repository_name>
+git clone https://github.com/IlyassBarkouk/chatgame.git
+cd chatgame/Projet/Projetfin
 ```
 
 ### 2. Installer les dépendances
 
 ```bash
-cd server
+cd Server
 npm install
 cd ..
-cd client
+cd Client
 npm install
 cd ..
 ```
@@ -37,7 +37,7 @@ cd ..
 
 ## ▶️ Lancer le projet en développement
 
-1.  **Lancer le serveur backend**
+1.  **Lancer le serveur**
 
     Dans un terminal :
 
@@ -46,25 +46,33 @@ cd ..
     npm start
     ```
 
-2.  **Lancer le frontend**
+2.  **Lancer le client**
 
     Dans un *autre* terminal :
-
+    
     ```bash
     cd client
     npm run dev
     ```
 
-Le client sera disponible sur `http://localhost:5173` (ou selon la configuration de Vite).
+    
+**NB : L’application ne fonctionnera pas tant que les étapes suivantes ne sont pas réalisées :**
+    ![test](https://github.com/user-attachments/assets/51193a4e-2774-470f-a1a3-28a9ecf783ad)
+    
+    Ouvrir le fichier src/Map/character.tsx.
+    Remplacer l’@host dans la variable :
+    const SOCKET_SERVER_URL = "http://<adresse_host>:3001";
+    Arrêter le client, puis le relancer.
 
 ---
 
-## ✅ Pré-requis
+**NB : Une fois les applications lancées, vous pouvez effectuer les actions suivantes :**
 
-* **Node.js** (version LTS recommandée)
-* **npm** (Node Package Manager)
-* **Git**
-* Un navigateur moderne (Chrome, Firefox, etc.)
+Pour que le navigateur Firefox accepte d’ouvrir la caméra ou le micro sur une URL externe, vous pouvez définir certaines valeurs sur true dans les paramètres **about:config**, comme illustré sur cette image.
+
+![send](https://github.com/user-attachments/assets/ac85e25b-e6f9-48a9-80a1-fea293083277)
+
+![send1](https://github.com/user-attachments/assets/f7210013-2f43-4ec5-986d-d7175646e163)
 
 ---
 
